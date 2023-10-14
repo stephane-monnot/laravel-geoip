@@ -38,6 +38,7 @@ class IPApi extends AbstractService
                 'fields' => 49663,
                 'lang' => $this->config('lang', ['en']),
             ],
+            'curl_params' => $this->config('curl_config', []),
         ];
 
         // Using the Pro service

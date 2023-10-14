@@ -15,6 +15,7 @@ class HttpClient
         'base_uri' => '',
         'headers' => [],
         'query' => [],
+        'curl_params' => [],
     ];
 
     /**
@@ -91,7 +92,7 @@ class HttpClient
         $curl = curl_init();
 
         // Set options
-        curl_setopt_array($curl, [
+        curl_setopt_array($curl, array_merge([
             CURLOPT_URL => $this->getUrl($url),
             CURLOPT_HTTPHEADER => $headers,
             CURLOPT_CONNECTTIMEOUT => 20,
@@ -102,7 +103,7 @@ class HttpClient
             CURLOPT_HEADER => 1,
             CURLINFO_HEADER_OUT => 1,
             CURLOPT_VERBOSE => 1,
-        ]);
+        ], $this->config['curl_params']));
 
         // Setup method specific options
         switch ($method) {
