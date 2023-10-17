@@ -92,7 +92,7 @@ class HttpClient
         $curl = curl_init();
 
         // Set options
-        curl_setopt_array($curl, array_merge([
+        curl_setopt_array($curl, array_replace_recursive([
             CURLOPT_URL => $this->getUrl($url),
             CURLOPT_HTTPHEADER => $headers,
             CURLOPT_CONNECTTIMEOUT => 20,
